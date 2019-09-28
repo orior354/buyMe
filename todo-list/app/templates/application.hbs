@@ -1,0 +1,28 @@
+
+<div class='todo-container'>
+    <div class="todo-header">
+        <h1 class="title">משימות</h1>
+            <div class="addTask-container" {{action 'addTodo'}}><span>+</span></div>
+    </div>
+    <div class="todo-body">
+        <ul>
+            {{#each model as |todo|}}
+            <li><div class="todo-castumCheckbox checked-{{todo.isDone}}" todoid='{{todo.id}}' isDone='{{todo.isDone}}' onclick={{action "finishStartTodo"}}></div> <div class='todo-name' todoid={{todo.id}} onclick={{action "updateName"}}>{{todo.id}}. {{todo.name}}</div> <span class="delete" onclick={{action 'deleteTodo'}} todoid='{{todo.id}}' >x</span></li>
+            {{/each}}
+        </ul>
+    </div>
+        <div class="todo-footer">
+            <div>לסיום: <span class="task-active">{{id-open-count model}}</span></div>
+            <div>הושלמו: <span class="task-finish"> {{id-done-count model}} </span></div>
+            <div>סה"כ: <span class='task-all'>{{model.length}}</span></div>
+        </div>
+  </div>
+<p class="instruction">
+* יש ללחוץ על שם המשימה כדי לערוך אותה
+<br>
+* יש ללחוץ עלכפתור ה - + כדי להוסיף משימה חדשה
+<br>
+* יש ללחוץ על כפתור ה - x כדי למחוק משימה
+<br>
+* יש ללחוץ על הכפתור צ'ק בוקס כדי לסיים / להתחיל משימה
+</p>
